@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">lab2</string>
+    <string name="title_home">Home</string>
+    <string name="title_BMI">BMI</string>
+    <string name="title_benedict_harris">Benedict / Harris</string>
+    <string name="title_receipts">Przepisy</string>
+    <string name="weight">Waga</string>
+    <string name="height">Wzrost</string>
+    <string name="calculate">Oblicz</string>
+    <string name="age">Wiek</string>
+    <string-array name="gender">
+        <item>Kobieta</item>
+        <item>Mezczyzna</item>
+    </string-array>
+</resources>
