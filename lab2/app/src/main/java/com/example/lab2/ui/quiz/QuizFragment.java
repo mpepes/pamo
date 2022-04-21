@@ -24,8 +24,7 @@ public class QuizFragment extends Fragment {
     private Button trueButton;
     private Button falseButton;
     private TextView questionTextView;
-    private ImageButton prevButton;
-    private ImageButton nextButton;
+    private int score = 0;
 
     private QuizViewModel quizViewModel;
     private FragmentQuizBinding binding;
@@ -51,13 +50,14 @@ public class QuizFragment extends Fragment {
         falseButton = root.findViewById(R.id.false_button);
         trueButton = root.findViewById(R.id.ture_buttoon);
 
-        prevButton = root.findViewById(R.id.prev_button);
-        nextButton = root.findViewById(R.id.next_button);
+
+        questionTextView.setText(R.string.question_declaration);
 
         trueButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 checkAnswer(true);
+                getNextQuestion();
             }
         });
 
@@ -65,24 +65,7 @@ public class QuizFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 checkAnswer(false);
-            }
-        });
-
-        nextButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                currentQuestionIndex = (currentQuestionIndex + 1) % questionBank.length;
-                updateQuestion();
-            }
-        });
-
-        prevButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (currentQuestionIndex > 0) {
-                    currentQuestionIndex = (currentQuestionIndex - 1) % questionBank.length;
-                    updateQuestion();
-                }
+                getNextQuestion();
             }
         });
 
@@ -96,6 +79,15 @@ public class QuizFragment extends Fragment {
         return root;
     }
 
+    private void getNextQuestion() {
+        if (currentQuestionIndex == (questionBank.length - 1)) {
+            questionTextView.setText("Your score: " + score + "/" + questionBank.length);
+        } else {
+            currentQuestionIndex = (currentQuestionIndex + 1) % questionBank.length;
+            updateQuestion();
+        }
+    }
+
     private void updateQuestion() {
         Log.d("Current", "Onclick" + currentQuestionIndex);
         questionTextView.setText(questionBank[currentQuestionIndex].getAnswerResId());
@@ -104,12 +96,8 @@ public class QuizFragment extends Fragment {
     private void checkAnswer(boolean userChoosenCorrect) {
         boolean answerIsTrue = questionBank[currentQuestionIndex].isAnswerTrue();
 
-        int toastMessageId = 0;
         if (userChoosenCorrect == answerIsTrue) {
-            toastMessageId = R.string.correct_answer;
-        } else {
-            toastMessageId = R.string.wrong_answer;
+            score += 1;
         }
-//        Toast.makeText(MainActivity.this, toastMessageId, Toast.LENGTH_SHORT).show();
     }
 }

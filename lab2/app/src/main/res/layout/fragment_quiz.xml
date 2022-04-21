@@ -20,7 +20,7 @@
         android:id="@+id/answer_buttons"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="34dp"
+        android:layout_marginTop="74dp"
         android:orientation="horizontal"
         app:layout_constraintTop_toTopOf="@+id/question">
 
@@ -40,31 +40,6 @@
             android:text="@string/false_text">
         </Button>
 
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="34dp"
-        app:layout_constraintTop_toTopOf="@+id/answer_buttons"
-        android:orientation="horizontal">
-
-        <ImageButton
-            android:contentDescription="@string/previous_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/prev_button"
-            android:src="@drawable/backward">
-        </ImageButton>
-
-        <ImageButton
-            android:contentDescription="@string/next_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/next_button"
-            android:src="@drawable/forward">
-
-        </ImageButton>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
