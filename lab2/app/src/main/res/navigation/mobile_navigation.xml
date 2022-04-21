@@ -28,4 +28,10 @@
         android:name="com.example.lab2.ui.receipts.ReceiptsFragment"
         android:label="@string/title_receipts"
         tools:layout="@layout/fragment_receipts" />
+
+    <fragment
+        android:id="@+id/navigation_quiz"
+        android:name="com.example.lab2.ui.quiz.QuizFragment"
+        android:label="@string/title_quiz"
+        tools:layout="@layout/fragment_quiz" />
 </navigation>

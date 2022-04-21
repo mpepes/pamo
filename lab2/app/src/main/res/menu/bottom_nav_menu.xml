@@ -21,4 +21,9 @@
         android:icon="@drawable/ic_launcher_foreground"
         android:title="@string/title_receipts" />
 
+    <item
+        android:id="@+id/navigation_quiz"
+        android:icon="@drawable/ic_dashboard_black_24dp"
+        android:title="@string/title_quiz" />
+
 </menu>

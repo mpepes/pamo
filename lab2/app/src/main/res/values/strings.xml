@@ -8,6 +8,7 @@
     <string name="height">Wzrost</string>
     <string name="calculate">Oblicz</string>
     <string name="age">Wiek</string>
+    <string name="title_quiz">Quiz</string>
     <string-array name="gender">
         <item>Kobieta</item>
         <item>Mezczyzna</item>
