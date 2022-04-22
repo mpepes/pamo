@@ -30,4 +30,6 @@
     <string name="question_ocean">The Atlantic Ocean is the biggest ocean on Earth. </string>  //False - Pacific Ocean
     <string name="previous_text">previous</string>
     <string name="next_text">next_text</string>
+    <string name="title_graph">Wykres</string>
+
 </resources>
