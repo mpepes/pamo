@@ -1,46 +1,60 @@
-package com.example.lab2.ui.receipts;
+package com.example.lab2.ui.receipts
 
-import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
+import androidx.lifecycle.ViewModelProvider.get
+import androidx.navigation.ui.AppBarConfiguration.Builder.build
+import androidx.navigation.Navigation.findNavController
+import androidx.navigation.ui.NavigationUI.setupActionBarWithNavController
+import androidx.navigation.ui.NavigationUI.setupWithNavController
+import com.example.lab2.ui.home.HomeViewModel
+import android.view.LayoutInflater
+import android.view.ViewGroup
+import android.os.Bundle
+import android.view.View
+import androidx.lifecycle.ViewModelProvider
+import android.widget.ImageView
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.LiveData
+import android.widget.Button
+import android.widget.TextView
+import com.example.lab2.ui.quiz.QuizViewModel
+import com.example.lab2.ui.quiz.Question
+import com.example.lab2.R
+import android.util.Log
+import com.example.lab2.ui.graph.GraphViewModel
+import java.util.concurrent.ThreadLocalRandom
+import com.example.lab2.ui.receipts.ReceiptsViewModel
+import android.widget.EditText
+import com.example.lab2.ui.dashboard.DashboardViewModel
+import android.widget.Spinner
+import com.example.lab2.ui.notifications.NotificationsViewModel
+import android.widget.ArrayAdapter
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.NavController
+import com.example.lab2.databinding.FragmentReceiptsBinding
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
-import com.example.lab2.databinding.FragmentReceiptsBinding;
-import com.example.lab2.ui.receipts.ReceiptsViewModel;
-import com.example.lab2.R;
-
-public class ReceiptsFragment extends Fragment {
-
-    private ReceiptsViewModel receiptsViewModel;
-    private FragmentReceiptsBinding binding;
-
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
-        receiptsViewModel =
-                new ViewModelProvider(this).get(ReceiptsViewModel.class);
-
-        binding = FragmentReceiptsBinding.inflate(inflater, container, false);
-        View root = binding.getRoot();
+class ReceiptsFragment : Fragment() {
+    private var receiptsViewModel: ReceiptsViewModel? = null
+    private var binding: FragmentReceiptsBinding? = null
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?, savedInstanceState: Bundle?
+    ): View? {
+        receiptsViewModel = ViewModelProvider(this).get(ReceiptsViewModel::class.java)
+        binding = FragmentReceiptsBinding.inflate(inflater, container, false)
+        val root: View = binding!!.root
 
 //        final TextView textView = binding.textHome;
 //        ImageView imageView = binding.imageView;
-        receiptsViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-            }
-        });
-        return root;
+        receiptsViewModel.getText().observe(viewLifecycleOwner, { })
+        return root
     }
 
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        binding = null;
+    override fun onDestroyView() {
+        super.onDestroyView()
+        binding = null
     }
 }
